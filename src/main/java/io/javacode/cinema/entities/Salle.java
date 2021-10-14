@@ -1,9 +1,8 @@
-package io.javacode.cinema.dao;
+package io.javacode.cinema.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Collection;

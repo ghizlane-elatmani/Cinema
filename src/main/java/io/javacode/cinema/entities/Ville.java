@@ -1,19 +1,21 @@
-package io.javacode.cinema.dao;
+package io.javacode.cinema.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.Collection;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
-public class Seance {
+public class Ville {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date heureDebut;
+    private String name;
+    private double longitude, latitude, altitude;
+    @OneToMany(mappedBy = "ville")
+    private Collection<Cinema> cinemas;
 
 }
