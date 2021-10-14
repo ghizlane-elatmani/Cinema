@@ -22,5 +22,7 @@ public class Projection {
     private Film film;
     @OneToMany(mappedBy = "projection")
     private Collection<Ticket> tickets;
+    @ManyToOne
+    private Seance seance;
 
 }
