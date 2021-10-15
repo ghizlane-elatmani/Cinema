@@ -4,6 +4,7 @@ import io.javacode.cinema.dao.*;
 import io.javacode.cinema.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -14,6 +15,7 @@ import java.util.Random;
 import java.util.stream.Stream;
 
 @Service
+@Transactional
 public class CinemaInitServiceImpl implements ICinemaInitService{
 
     @Autowired
@@ -90,6 +92,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
             Seance seance = new Seance();
             try {
                 seance.setHeureDebut(dateFormat.parse(s));
+                seanceRepository.save(seance);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
