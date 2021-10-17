@@ -7,8 +7,10 @@ import io.javacode.cinema.entities.Ticket;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -42,6 +44,7 @@ public class CinemaRestController {
     }
 
     @PostMapping("/payerTickets")
+    @Transactional
     public List<Ticket> payerTickets(@RequestBody TicketForm ticketForm){
         List<Ticket> ticketList = new ArrayList<>();
         ticketForm.getTickets().forEach(idTicket->{
