@@ -24,8 +24,16 @@ public class CinemaRestController {
     public byte[] image(@PathVariable(name = "id") Long id) throws IOException {
         Film film = filmRepository.findById(id).get();
         String photoName = film.getPhoto();
-        File file = new File("/home/riri/cinema/images/"+photoName);
+
+        /*
+        String home = System.getProperty("user.home");
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>> #home: " + home);
+        File file = new File(System.getProperty("user.home")+"/cinema/images/"+photoName);
         Path path = Paths.get(file.toURI());
+        */
+
+        // TODO do path as external source in application properties
+        Path path = Paths.get(System.getProperty("user.home"), "cinema", "images", photoName);
         return Files.readAllBytes(path);
     }
 
