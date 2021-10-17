@@ -22,7 +22,6 @@ public class Ticket {
     @ManyToOne
     private Place place;
     @ManyToOne
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Projection projection;
 
 }
